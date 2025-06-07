@@ -1,0 +1,14 @@
+@for (item of regions; track $index) {
+<button type="button"
+  class="btn font-bold pr-5 mr-3 btn-neutral rounded-4xl shadow-black shadow-md text-blue-50 font-mono"
+  [class.btn-primary]="query() === item"
+  (click)="query.set(item)"
+  id="{{$index}}"
+  #boton>{{item}}</button>
+}
+<country-list
+[countries]="countryResource.value() ?? []"
+[errorMessage]="countryResource.error()"
+[isLoading]="countryResource.isLoading()"
+[isEmpty]="countryResource.value()?.length === 0"
+/>

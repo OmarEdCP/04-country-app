@@ -1,0 +1,15 @@
+<section class="felx flex-row gap-2 mt-2">
+  <input type="text"
+    class="input input-bordered mr-2 w-56"
+    placeholder='{{placeholder()}}'
+    autofocus
+    #txtSearch
+    (keyup.enter)="newValue.emit(txtSearch.value)"
+    (keyup)="inputValue.set(txtSearch.value)"
+    [value]="inputValue()"
+    />
+  <button class="btn btn-primary"
+    (click)="newValue.emit(txtSearch.value)">
+    Buscar
+  </button>
+</section>

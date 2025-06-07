@@ -1,0 +1,14 @@
+<!--  -->
+@if (countryResources.error()) {
+<country-not-found />
+}
+
+<!--  -->
+@if (countryResources.isLoading()) {
+  <is-loading />
+}
+
+<!--  -->
+@if (countryResources.hasValue()) {
+<country-information-page [country]="countryResources.value()"/>
+}

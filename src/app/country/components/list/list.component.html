@@ -1,0 +1,64 @@
+<section class="mt-5">
+  <table class="table table-md mt-2 w-full">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Ícono</th>
+        <th>Bandera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      @for (country of countries(); track country.cca2;let index = $index) {
+      <tr>
+        <td>{{index + 1}}</td>
+        <td>{{country.flag}}</td>
+        <td>
+          <img [src]="country.svg" [alt]="country.name" class="w-20 p-4 size-15 object-contain max-w-full h-auto">
+        </td>
+        <td>{{country.name}}</td>
+        <td>{{country.capital}}</td>
+        <td>
+          <span class="badge badge-accent ">{{country.population |
+            number}}</span>
+        </td>
+        <td class="link-primary cursor-pointer" [routerLink]="['/country/by',country.cca2]"> Más información </td>
+      </tr>
+      }
+
+      @if (errorMessage()) {
+      <tr>
+        <td colspan="8" class="bg-red-600 text-center px-4 py-3 rounded relative">
+          <strong class="font-bold">
+            {{errorMessage()}}
+          </strong>
+        </td>
+      </tr>
+      }
+
+      <!--  -->
+      @if (isLoading()) {
+      <tr>
+        <td colspan="7" class="text-center">
+          <is-loading />
+        </td>
+      </tr>
+      }
+
+      <!--! isEmpty()
+        @if (countries().length === 0) {
+        <tr>
+          <td colspan="8" class="text-center">
+            No se encontraron resultados
+          </td>
+         </tr>
+      }
+-->
+
+    </tbody>
+  </table>
+</section>

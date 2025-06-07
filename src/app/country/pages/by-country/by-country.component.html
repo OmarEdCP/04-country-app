@@ -1,0 +1,13 @@
+<country-search-input
+  placeholder="Buscar por Paises"
+  (newValue)="query.set($event)"
+  [debounceTime]="300"
+  [initialValue]="query()"
+   />
+
+ <country-list
+ [countries]="countrySrc.value() ?? []"
+ [errorMessage]="countrySrc.error()"
+ [isLoading]="countrySrc.isLoading()"
+ [isEmpty]="countrySrc.value()?.length === 0"
+ />

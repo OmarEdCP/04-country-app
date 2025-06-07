@@ -1,0 +1,19 @@
+<!-- TODO: Crear un componente para cada section  -->
+
+<!--! search-input  -->
+<country-search-input
+(newValue)="query.set($event)"
+[debounceTime]="300"
+[initialValue]="query()"
+placeholder="Buscar por capital de mi pais"
+/>
+
+<!--! list  -->
+<country-list
+[countries]="countryResource.value() ?? []"
+[errorMessage]="countryResource.error()"
+[isLoading]="countryResource.isLoading()"
+[isEmpty]="countryResource.value()?.length === 0"
+/>
+
+
